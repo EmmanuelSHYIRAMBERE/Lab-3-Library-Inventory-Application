@@ -34,8 +34,8 @@ A comprehensive library management system for tracking books, eBooks, audiobooks
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd library-inventory
+git clone https://github.com/EmmanuelSHYIRAMBERE/Lab-3-Library-Inventory-Application.git
+cd Lab-3-Library-Inventory-Application
 ```
 
 ### 2. Install Dependencies with Poetry
@@ -93,6 +93,7 @@ poetry run python main.py
 ## Example Output
 
 ### Main Menu
+
 ```
 ============================================================
 Library Inventory Management System
@@ -110,6 +111,7 @@ Enter your choice:
 ```
 
 ### Inventory Report
+
 ```
 ============================================================
                 LIBRARY INVENTORY REPORT
@@ -133,6 +135,7 @@ Summary:
 ```
 
 ### Library Statistics
+
 ```
 📊 LIBRARY STATISTICS
 ==================================================
@@ -197,18 +200,20 @@ Borrower
 ## Key Features
 
 ### 1. Abstract Base Classes
+
 ```python
 class LibraryResource(ABC):
     @abstractmethod
     def get_resource_type(self) -> str:
         pass
-    
+
     @abstractmethod
     def get_loan_period(self) -> int:
         pass
 ```
 
 ### 2. Inheritance with super()
+
 ```python
 class Book(LibraryResource):
     def __init__(self, resource_id, title, author, year, isbn, pages):
@@ -218,6 +223,7 @@ class Book(LibraryResource):
 ```
 
 ### 3. Special Methods
+
 ```python
 def __repr__(self) -> str:
     return f"Book(id='{self._resource_id}', title='{self._title}')"
@@ -229,6 +235,7 @@ def __eq__(self, other) -> bool:
 ```
 
 ### 4. List Comprehensions
+
 ```python
 def search_by_title(resources, query):
     return [r for r in resources if query.lower() in r.title.lower()]
@@ -241,6 +248,7 @@ def get_unique_authors(resources):
 ```
 
 ### 5. File I/O with JSON
+
 ```python
 def save_library_data(resources, borrowers, filename):
     data = {'resources': [], 'borrowers': []}
@@ -259,19 +267,23 @@ def load_library_data(filename):
 The application comes pre-loaded with sample data:
 
 **Books:**
+
 - To Kill a Mockingbird by Harper Lee (1960)
 - 1984 by George Orwell (1949)
 - Pride and Prejudice by Jane Austen (1813)
 
 **EBooks:**
+
 - The Great Gatsby by F. Scott Fitzgerald (1925)
 - Moby Dick by Herman Melville (1851)
 
 **AudioBooks:**
+
 - Harry Potter and the Sorcerer's Stone by J.K. Rowling (1997)
 - The Hobbit by J.R.R. Tolkien (1937)
 
 **Borrowers:**
+
 - John Doe (M001)
 - Jane Smith (M002)
 - Bob Johnson (M003)
@@ -286,30 +298,35 @@ The application comes pre-loaded with sample data:
 ## Features in Detail
 
 ### Resource Management
+
 - Add different types of resources (Book, EBook, AudioBook)
 - Each type has specific properties and loan periods
 - View detailed information about any resource
 - Remove resources from inventory
 
 ### Borrower Management
+
 - Register library members
 - Track borrowed items per member
 - View borrower history
 - Prevent removal of borrowers with outstanding items
 
 ### Borrow/Return Operations
+
 - Borrow available resources
 - Automatic due date calculation based on resource type
 - Return borrowed items
 - Track overdue items with warnings
 
 ### Search & Filter
+
 - Search by title or author (case-insensitive)
 - Filter by resource type
 - Filter available vs borrowed items
 - All using efficient list comprehensions
 
 ### Data Persistence
+
 - Automatic save on data changes
 - JSON format for human-readable storage
 - Load previous session data on startup
@@ -318,6 +335,7 @@ The application comes pre-loaded with sample data:
 ## Error Handling
 
 The application includes comprehensive error handling:
+
 - Input validation for all user entries
 - Email and ISBN format validation
 - Duplicate ID prevention
@@ -336,17 +354,21 @@ The application includes comprehensive error handling:
 ## Troubleshooting
 
 **Issue**: `ModuleNotFoundError: No module named 'colorama'`
+
 - **Solution**: Install dependencies using `poetry install`
 
 **Issue**: Data not persisting
+
 - **Solution**: Check write permissions in `src/data/` directory
 
 **Issue**: Application crashes on startup
+
 - **Solution**: Ensure Python 3.10+ is installed: `python --version`
 
 ## Testing
 
 Run unit tests:
+
 ```bash
 poetry run python -m pytest tests/
 ```
@@ -354,6 +376,7 @@ poetry run python -m pytest tests/
 ## Contributing
 
 Contributions are welcome! Please ensure:
+
 - Code follows PEP 8 style guidelines
 - Type hints are included
 - Docstrings are comprehensive
